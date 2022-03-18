@@ -40,7 +40,7 @@ require_once "../src/database/config.php";
 </div>
 </nav>
 <div style="padding-bottom: 1em;" class="container-fluid">
-	<form method="post" action="../djksqjkdzq.php">
+	<form method="post" action="../djksqjkdzq.php" enctype="multipart/form-data">
 		<br>
 		<br>
 		<br>
@@ -78,7 +78,7 @@ require_once "../src/database/config.php";
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Envoyer un fichier</label>
-			<input class="form-control" type="file" name="formFile">
+			<input class="form-control" type="file" id="formFile" name="formFile">
 		</div>
 		<div class="text-center">
 			<input type="submit" name="insert" class="btn btn-secondary btn-lg btn-success" value="Envoyer"/>

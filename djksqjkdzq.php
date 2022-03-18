@@ -1,4 +1,12 @@
 <?php
+
+$newfilename= date('dmYHis').str_replace(" ", "", basename($_FILES["formFile"]["name"]));
+if(move_uploaded_file($_FILES["formFile"]["tmp_name"], "./uploads/" . $newfilename))
+{
+    echo "Le fichier ". basename( $_FILES["formFile"]["name"]). " a été téléversé.";
+} else {
+    echo "Désolé, une erreur s'est produite en téléversant le fichier.";
+}
 // On commence par récupérer les champs
 if(isset($_POST['nom']))      $nom=$_POST['nom'];
 else      $nom="";
@@ -35,7 +43,7 @@ else
 // sélection de la base  
     
     // on écrit la requête sql
-    $sql = "INSERT INTO `immo.signalement` (`nom`, `prenom`, `adresse`, `email`, `message`, `signalement`, `fichier`) VALUES ('$nom', '$prenom', '$adresse', '$email', '$messages', '$signalement', '$formFile');";
+    $sql = "INSERT INTO `immo.information` (`nom`, `prenom`, `adresse`, `email`, `message`, `signalement`, `fichier`) VALUES ('$nom', '$prenom', '$adresse', '$email', '$messages', '$signalement', '$newfilename');";
     
     // on insère les informations du formulaire dans la table
     mysqli_query($link, $sql);
@@ -44,5 +52,6 @@ else
     echo 'Vos infos on été ajoutées.';
 
     mysqli_close($link);  // on ferme la connexion
-    } 
-?>
+    }
+    
+    ?>
